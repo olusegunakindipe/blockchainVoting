@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <!-- <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">-->
+            <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+            <title>Election System</title>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        
+   
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.js"></script>
+      
+       <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">      
+       
+       <script src="https://unpkg.com/lodash@4.16.6"></script>
+ 
+       <link href="css/index.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="container" style="margin-top:20px;">
+            <div class="row" id="mainpage">
+                <div class="col-md-12 well" style="margin-bottom:20px;"> 
+                    <div class="col-md-3">
+                            <button type="submit" onClick="App.addCandidateDiv()" class="btn btn-warning" value="Cancel" >Add candidates <span class="glyphicon glyphicon-send"></span></button>
+                        </div>    
+                    <div class="col-md-3">
+                        <button type="submit" onClick="App.registerDiv()" class="btn btn-warning" value="Cancel" >Register Voters <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" onClick="App.authDiv()" class="btn btn-warning" value="Vote" >Cast Votes<span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        <button type="submit" onClick="App.countVoteDiv()" class="btn btn-warning" value="Cancel" >Count Votes <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add candidates Section-->
+            <div class="addition" id="addition" style="display:none">
+                <div class="well form-horizontal"   id="contact_form">
+                    <fieldset>
+                            <!-- Form Name -->
+                        <legend class="text-center">Add Candidates!</legend>
+                        <!-- Text input-->
+                        <br/><br/>
+                        <div id="loader3" style="display: none">
+                        
+                            <!--<p class="text-center"> Loading... </p>   -->
+                        </div>
+                        <div id ="content3">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Candidate ID</label>  
+                            <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input  name="id" id="id" placeholder="Candidate ID" class="form-control"  type="number" required>
+                            </div>
+                            </div>
+                        </div>
+                
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Candidate Name</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <input name="aname" id="name" placeholder="Candidate Name" class="form-control" type="text"  required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Post</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
+                                <input name="post" id="post" placeholder="Post" class="form-control" type="text"  required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Party</label>  
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input type="text" id="party" placeholder="Party" class="form-control"  type="text"  required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Age</label>  
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
+                                    <input type="number" id="age" placeholder="Age" class="form-control"  type="text"  required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Photo</label>  
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                                    <input type="file" id="photo" placeholder="Photo" class="form-control"   required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Logo</label>  
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-flag"></i></span>
+                                    <input type="file" id="logo" placeholder="Logo" class="form-control"  required>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="form-group row" >
+                            
+                            <div class="col-md-5 .offset-md-7">
+                                <button type="button" onClick="App.addCandidates()" class="btn btn-warning btn-add2" value="submit">Add Candidate <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                            <div class="col-md-5 .offset-md-7">
+                                <button type="submit" onClick="App.resetVoters()" class="btn btn-warning button3" value="Cancel" >Reset <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                        </span>
+                         
+                    </fieldset>
+                </div>
+            </div>
+
+           <!-- Begin Voters Registration Section-->
+            <div class="registration" id="registration" style="display:none">
+                <div class="well form-horizontal"   id="contact_form">
+                    <fieldset>
+                         <!-- Form Name -->
+                        <legend class="text-center">Voting Registration and Sign Up!</legend>
+                        <!-- Text input-->
+                        <br/><br/>
+                        <div id="loader1" style="display: none">
+                        
+                            <!--<p class="text-center"> Loading... </p>   -->
+                        </div>
+                        <div id ="content1">
+                            <!--<h2 id="Ninn">  </h2>-->
+                        
+                            <!--<img id="loader" src="images/spinner.gif" alt="Loading..." style="display:none">-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Full Name</label>  
+                                <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input  name="fullname" id="fullname" placeholder="Full Name" class="form-control"  type="text" required>
+                                </div>
+                                </div>
+                            </div> 
+                            <!-- Text input-->
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">phone Number</label>  
+                                <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input  name="phonenumber" id="phonenumber" placeholder="Phone  Number" class="form-control"  type="text" required>
+                                </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Text input-->
+                           <!-- < <div class="form-group">
+                                <label class="col-md-4 control-label">Address #</label>  
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                        <input name="address" id="address" placeholder="Address" class="form-control" type="text"  required>
+                                    </div>
+                                </div>
+                            </div>> -->
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Location #</label>  
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-road"></i></span>
+                                        <select name="location" id="location" placeholder="Select your Location" class="form-control" type="select"  required>
+                                            <option value="empty"> </option>
+                                            <option value="LA" > Lagos</option>
+                                            <option value="AB" > Abuja</option>
+                                            <option value="ON" > Ondo</option>
+                                            <option value="CR" > Cross River</option>
+                                            <option value="DE" > Delta</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">National Identification Number</label>  
+                                <div class="col-md-4 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                        <input name="nin" id="nin" placeholder="Address" class="form-control" type="text"  required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Password</label>  
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
+                                            <input type="password" id="key" placeholder="Password..." class="form-control"  type="text" minlength="1" maxlength="10" required>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+                            <!-- Success message -->
+                            <div class="alert alert-success" role="alert" id="success_message" style="display: none">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for Registering, You are eligible to vote </div>
+                            <!-- Button -->
+                            <span class="form-group">
+                                <label class="col-md-4 control-label"></label>
+                                <div class="col-md-4">
+                                    <button type="button" onClick="App.addVoters()" class="btn btn-warning btn-add" value="Cancel">Register <span class="glyphicon glyphicon-send"></span></button>
+                                </div>
+                                    <div class="col-md-4">
+                                    <button type="submit" onClick="App.resetVoters()" class="btn btn-warning button2" value="Cancel" >Reset <span class="glyphicon glyphicon-send"></span></button>
+                                </div>
+                            </span>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+           <!-- End Voters Registration Section-->
+                            <div id="auth" style="display:none">
+                                <div id="loader2" style="display: none">
+                        
+                                    <!--<p class="text-center"> Loading... </p>   -->
+                                </div>
+                                <div id="content2">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">National ID</label>  
+                                        
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                                <input type="text" id="nin2" placeholder="Enter Your Password..." class="form-control"  type="text" minlength="1" maxlength="10" required>
+                                            </div>
+                                        
+                                    </div>
+                                    
+                                    <br/>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Password</label>  
+                                      
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                                <input type="password" id="key2" placeholder="Enter Your Password..." class="form-control"  type="text" minlength="1" maxlength="10" required>
+                                            </div>
+                                                                             
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" onClick="App.ValidateUSers()" class="btn btn-warning btn-add1" value="Cancel">Login <span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                </div>
+                             </div>   
+           <!-- Begin Voting section Section-->
+            <div id="voting" style="display:none">
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <h1 class="text-center"><b>Nigeria Presidential Election</b></h1>
+                        <hr/>
+                        <br/> 
+                        <div id="loader">
+                        
+                            <!--<p class="text-center"> Loading... </p>   -->
+                        </div>        
+                        <div id="content" class="row" style="display:none">
+                             <!--load candidates here -->
+                            
+                            
+                            <p id="accountAddress" class="text-center"></p>
+                        
+
+                            <div id="candidateTemplate" style="display:none">        
+                           
+                        
+                            <div id="content0">
+                            <!--form onSubmit= App,castVote(); return false;-->
+                                <div class="col-sm-6 col-lg-4">                
+                                    <div class="panel panel-default panel-vote">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"> </h3>
+                                        </div> 
+                                        <div class="panel-body">               
+                                           <img alt="100*100" id="img1" data-src="holder.js" class="img-rounded img-center" style="width:100%;" src="" data-holder-rendered="true">
+                                            <br/><br/>
+                                            <strong> Name</strong>: <span class="candidate-name"> </span><br/><br/>
+                                            <strong> Age</strong>: <span class="candidate-age"> </span><br/><br/>
+                                            <strong> Post</strong>: <span class="candidate-post"> </span><br/><br/>
+                                            <strong> Party</strong>: <span class="candidate-party"> </span>
+                                            <img alt="100*100" data-src="holder.js" class="img-rounded img-center" id="logo"  src="" data-holder-rendered="true">
+                                            <br/><br/>
+                                            <button class="btn btn-default btn-primary btn-vote"  type="button" data-id="1"> VOTE </button>                                                        
+                                          
+                                        </div> 
+                                    </div>                                             
+                                </div>
+                            </div>
+                        </div>
+                        </div> 
+                        <div class="success" style="display:none">
+                            <p> Your Registration is successful, Please Proceed to Vote</p>
+                        </div>
+                        <!--Message for Unsuccessful Registration-->
+                        <div class="error" style="display:none">
+                            <p> Your Registration is Not successful, Please Make sure all fields are Filled</p>
+                    
+                        </div>
+                        <!--Message for Invalid Authentication Login-->
+                        <div class="success2" style="display:none">
+                            <p>NIN Valid, Please proceed to Vote  </p>
+                        </div>
+                        <div class="error2" style="display:none">
+                            <p>NIN invlaid, Input a Valid NIN  </p>
+                        </div>
+
+                        <div class="success3" style="display:none">
+                            <p> Your Vote is successful</p>  </p>
+                        </div>
+                        <div class="error3" style="display:none">
+                            <p> You can only vote for one candidate</p>  </p>
+                        </div>
+                        
+                    </div>
+                </div>  
+
+            </div>
+                <!-- End  Voting Section-->
+                <!-- Begin counting vote section -->
+                        <div id="counting" style="display:none">
+                            <div><b>Total votes:</b>&nbsp;&nbsp;<span id="total-votes"></span></div>
+                            <div id="vote-status-alert">Getting vote status...</div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Names</th>
+                                        <th scope="col">Party</th>
+                                        <th scope="col">Votes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="candidatesResults"></tbody>
+                            </table>
+                            
+                        </div>
+                <!-- End counting vote section -->
+        </div>
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
+        
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        
+        <!--<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>-->
+        
+        <script src="js/web3.min.js"></script>
+        <script src="js/truffle-contract.js"></script>
+        
+        <script src="js/index.js"></script>
+        <script src="js/app.js"></script>
+
+    </body>
+</html>

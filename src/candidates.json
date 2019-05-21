@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Mohammodu Buhari",
+    "picture": "images/buhari.jpg",
+    "post": "President",
+    "party":"African Progressive Congress",
+    "logo":"images/APC.jpg",
+    "age": 76
+   
+  },
+  {
+    "id": 2,
+    "name": "Atiku Abubakar",
+    "picture": "images/atiku.jpg",
+    "post": "President",
+    "party":"Peoples Democratic Party",
+    "logo":"images/pdp.png",
+    "age": 72
+  }
+  
+]

@@ -1,0 +1,39 @@
+body{
+    /**background-image: url("../images/pics3.jpg");**/
+    
+}
+#img1{
+    height: 250px;
+    width:320px;
+
+}
+#logo{
+    width:50px; height: 50px;
+}
+.panel{
+    margin: 10px 20px;
+    position: relative;
+    left:50%;
+}
+
+#loader, #loader1, #loader2, #loader3 {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid blue;
+    width: 120px;
+    height: 120px;
+    margin: -40px 500px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

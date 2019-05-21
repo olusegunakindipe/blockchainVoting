@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Election System</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+   
+    
+  </head>
+  <body>
+    <div class="container" style="width: 650px;">
+            <div class="form-group">
+                    <label class="col-md-4 control-label">Candidate ID</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  name="id" id="id" placeholder="Candidate ID" class="form-control"  type="number" required>
+                    </div>
+                    </div>
+                </div>
+            
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Candidate Name</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            <input name="aname" id="name" placeholder="Candidate Name" class="form-control" type="text"  required>
+                        </div>
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Post</label>  
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            <input name="post" id="post" placeholder="Post" class="form-control" type="text"  required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Party</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input type="text" id="party" placeholder="Party" class="form-control"  type="text"  required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Age</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input type="number" id="age" placeholder="Age" class="form-control"  type="text"  required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Photo</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input type="file" id="photo" placeholder="Photo" class="form-control"   required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Logo</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input type="file" id="logo" placeholder="Logo" class="form-control"  required>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4">
+                            <button type="button" onClick="App.addVoters()" class="btn btn-warning btn-add" value="Cancel">Add Candidate <span class="glyphicon glyphicon-send"></span></button>
+                        </div>
+                            <div class="col-md-4">
+                            <button type="submit" onClick="App.resetVoters()" class="btn btn-warning button2" value="Cancel" >Reset <span class="glyphicon glyphicon-send"></span></button>
+                        </div>
+                    </span>
+                                
+                                         
+    </div>    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
